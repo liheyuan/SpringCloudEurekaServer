@@ -1,4 +1,4 @@
-/**
+package com.coder4.eureka.server; /**
  * @(#)Application.java, Aug 03, 2017.
  * <p>
  * Copyright 2017 fenbi.com. All rights reserved.
