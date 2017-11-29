@@ -1,26 +1,24 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = ''
 
-jar {
-    archiveName = "eureka-server.jar"
-
-    from {
-
-        configurations.runtime.collect {
-            it.isDirectory() ? it : zipTree(it)
+buildscript {
+        ext {
+            springBootVersion = '1.5.6.RELEASE'
         }
-
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
+    
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+            maven { url 'https://jitpack.io' }
         }
-    }
-
-    manifest {
-        attributes 'Main-Class': 'com.coder4.eureka.server.EurekaServerApplication'
-    }
-
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
 }
 
 repositories {
